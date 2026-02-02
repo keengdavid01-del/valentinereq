@@ -4,7 +4,7 @@ import random
 # Page config
 st.set_page_config(page_title="For Monklet ❤️", page_icon="💖")
 
-# Custom CSS for the "Valentine" vibe
+# Corrected CSS logic
 st.markdown("""
     <style>
     .stApp {
@@ -13,6 +13,7 @@ st.markdown("""
     h1, h2, h3 {
         color: #ff4d6d !important;
         font-family: 'Comic Sans MS', cursive, sans-serif;
+        text-align: center;
     }
     .stButton>button {
         border-radius: 20px;
@@ -20,13 +21,20 @@ st.markdown("""
         background-color: white;
         color: #ff4d6d;
         font-weight: bold;
+        height: 3em;
+        width: 100%;
     }
     .stButton>button:hover {
         background-color: #ff4d6d;
         color: white;
     }
+    .heart-deco {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
     </style>
-    """, unsafe_allow_status=True)
+    """, unsafe_allow_html=True) # FIXED: changed status to html
 
 # Initializing state
 if 'no_count' not in st.session_state:
@@ -36,12 +44,9 @@ def increase_no():
     st.session_state.no_count += 1
 
 # Content
-st.write("### ❤️ 💌 ❤️")
+st.markdown('<div class="heart-deco">❤️ 💌 ❤️</div>', unsafe_allow_html=True)
 st.title(f"Hi Monklet!")
 st.header("Will you be my Valentine?")
-
-# Animated Hearts (Visual flair)
-st.write("💕 ✨ 🌸 ✨ 💕")
 
 # The "No" responses
 no_messages = [
@@ -59,15 +64,14 @@ msg_index = min(st.session_state.no_count, len(no_messages) - 1)
 col1, col2 = st.columns(2)
 
 with col1:
-    if st.button("YES! 💖", use_container_width=True):
+    if st.button("YES! 💖"):
         st.balloons()
         st.write("### YAY! Best decision ever! 🥰")
         st.write("I love you, Monklet! See you on the 14th!")
-        # A cute celebratory cat/heart GIF
         st.image("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZqZzR4eXp3ZzR4eXp3ZzR4eXp3ZzR4eXp3ZzR4eXp3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KztT2c4u8mYYUiCiY6/giphy.gif")
 
 with col2:
     if st.session_state.no_count < 7:
-        st.button(no_messages[msg_index], on_click=increase_no, use_container_width=True)
+        st.button(no_messages[msg_index], on_click=increase_no)
     else:
-        st.write("💔 Interaction disabled. Try the other button!")
+        st.write("💔 Oops! Button's broken.")
