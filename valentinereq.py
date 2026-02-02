@@ -6,7 +6,7 @@ st.set_page_config(page_title="For My Monklet ❤️", page_icon="💖")
 
 
 # Removed the trailing '?' to ensure the URL loads correctly
-spotify_src = "https://accounts.spotify.com/api/token6"
+spotify_src = "https://open.spotify.com/embed/playlist/6wZprQFnnKG8rQO0mhiW7M?"
 
 
 st.markdown("""
@@ -117,4 +117,5 @@ with col2:
         """,
         height=350,
     )
+
 
