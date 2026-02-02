@@ -1,10 +1,13 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# Page config
-st.set_page_config(page_title="For Monklet ❤️", page_icon="💖")
 
-# Custom CSS for the "Valentine" vibe
+st.set_page_config(page_title="For My Monklet ❤️", page_icon="💖")
+
+
+spotify_src = "https://open.spotify.com/playlist/6wZprQFnnKG8rQO0mhiW7M?si=-YdzWQp3RK-RXGfjdZIeLw&pi=rjJ4hD9aSEydl"
+
+
 st.markdown("""
     <style>
     .stApp {
@@ -15,7 +18,6 @@ st.markdown("""
         font-family: 'Comic Sans MS', cursive, sans-serif;
         text-align: center;
     }
-    /* Style for the Streamlit Yes button */
     .stButton>button {
         border-radius: 20px;
         border: 2px solid #ff4d6d;
@@ -26,11 +28,30 @@ st.markdown("""
         width: 100%;
     }
     .stButton>button:hover {
-        background-color: #ff4d6d;
-        color: white;
+        background-color: #ff4d6d !important;
+        color: white !important;
+    }
+    .poem-box {
+        background-color: white;
+        padding: 25px;
+        border-radius: 15px;
+        border: 2px dashed #ffccd5;
+        text-align: center;
+        margin-top: 20px;
+        color: #444;
+        font-size: 1.2em;
+        line-height: 1.6;
     }
     </style>
     """, unsafe_allow_html=True)
+
+
+with st.sidebar:
+    st.markdown("### 🎵 For Monklet")
+    components.iframe(spotify_src, height=80, scrolling=False)
+    st.write("---")
+    st.write("Click play for the vibes! ✨")
+
 
 st.markdown('<h3 style="text-align: center;">❤️ 💌 ❤️</h3>', unsafe_allow_html=True)
 st.title("Hi Monklet!")
@@ -39,16 +60,24 @@ st.header("Will you be my Valentine?")
 col1, col2 = st.columns(2)
 
 with col1:
-    # The actual functional Yes button
     if st.button("YES! 💖"):
         st.balloons()
         st.markdown("### YAY! Best decision ever! 🥰")
-        st.markdown("<p style='text-align:center;'>I love you, Monklet! See you on the 14th!</p>", unsafe_allow_html=True)
+        
+        # Your custom "Human" poem
+        st.markdown("""
+            <div class="poem-box">
+                Roses are red,<br>
+                Violets are blue,<br>
+                I don't know what else to rhyme...<br>
+                But I love you. ❤️
+            </div>
+        """, unsafe_allow_html=True)
+        
         st.image("https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGVlNDIyajN4N24ydGF1enpjamJwb2N2MDF2MmM3cWN4dzRyMGM5cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/yZ7Xya4covzN1WhOAa/giphy.gif")
 
 with col2:
-    # The "Running" No button using JavaScript
-    # This creates a small sandbox where the button lives and escapes
+    # The "Running" No button
     components.html(
         """
         <div id="container" style="height: 300px; width: 100%; position: relative;">
@@ -61,7 +90,7 @@ with col2:
                 border-radius: 20px;
                 font-weight: bold;
                 cursor: pointer;
-                transition: all 0.2s ease;
+                transition: all 0.15s ease;
                 z-index: 1000;
             ">No</button>
         </div>
@@ -73,19 +102,16 @@ with col2:
             btn.addEventListener('mouseover', function() {
                 const containerWidth = container.clientWidth - btn.clientWidth;
                 const containerHeight = container.clientHeight - btn.clientHeight;
-                
                 const newLeft = Math.random() * containerWidth;
                 const newTop = Math.random() * containerHeight;
-                
                 btn.style.left = newLeft + 'px';
                 btn.style.top = newTop + 'px';
             });
             
             btn.addEventListener('click', function() {
-                alert("Nice try, Monklet! You gotta click Yes!");
+                alert("Nice try Baby! You gotta click Yes!");
             });
         </script>
         """,
         height=350,
     )
-
