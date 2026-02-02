@@ -68,10 +68,11 @@ with col1:
         st.balloons()
         st.write("### YAY! Best decision ever! 🥰")
         st.write("I love you, Monklet! See you on the 14th!")
-        st.image("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZqZzR4eXp3ZzR4eXp3ZzR4eXp3ZzR4eXp3ZzR4eXp3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KztT2c4u8mYYUiCiY6/giphy.gif")
+        st.image("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdG9jenhkZXc5ZjB4OXNkNjE2cmRrMjdib3RvZW5kd25nMjlwcGsxZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3NtY188QaxDdC/giphy.gif")
 
 with col2:
     if st.session_state.no_count < 7:
         st.button(no_messages[msg_index], on_click=increase_no)
     else:
         st.write("💔 Oops! Button's broken.")
+
