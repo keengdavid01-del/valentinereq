@@ -5,7 +5,7 @@ import streamlit.components.v1 as components
 st.set_page_config(page_title="For My Monklet ❤️", page_icon="💖")
 
 
-spotify_src = "https://open.spotify.com/playlist/6wZprQFnnKG8rQO0mhiW7M?si=-YdzWQp3RK-RXGfjdZIeLw&pi=rjJ4hD9aSEydl"
+spotify_src = "https://open.spotify.com/embed/playlist/6wZprQFnnKG8rQO0mhiW7M?"
 
 
 st.markdown("""
@@ -115,3 +115,4 @@ with col2:
         """,
         height=350,
     )
+
