@@ -44,7 +44,7 @@ with col1:
         st.balloons()
         st.markdown("### YAY! Best decision ever! 🥰")
         st.markdown("<p style='text-align:center;'>I love you, Monklet! See you on the 14th!</p>", unsafe_allow_html=True)
-        st.image("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZqZzR4eXp3ZzR4eXp3ZzR4eXp3ZzR4eXp3ZzR4eXp3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KztT2c4u8mYYUiCiY6/giphy.gif")
+        st.image("https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGVlNDIyajN4N24ydGF1enpjamJwb2N2MDF2MmM3cWN4dzRyMGM5cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/yZ7Xya4covzN1WhOAa/giphy.gif")
 
 with col2:
     # The "Running" No button using JavaScript
@@ -88,3 +88,4 @@ with col2:
         """,
         height=350,
     )
+
