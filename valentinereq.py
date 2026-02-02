@@ -1,13 +1,13 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# 1. Page Config
+
 st.set_page_config(page_title="For My Monklet ❤️", page_icon="💖")
 
-# 2. Your Spotify Link
+
 spotify_src = "https://open.spotify.com/embed/playlist/6wZprQFnnKG8rQO0mhiW7M?"
 
-# 3. Custom Styling
+
 st.markdown("""
     <style>
     .stApp {
@@ -46,7 +46,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# 4. Sidebar for the Music Player
+
 with st.sidebar:
     st.markdown("### 🎵 For Monklet")
     # Height set to 152 for the play button
@@ -54,8 +54,8 @@ with st.sidebar:
     st.write("---")
     st.write("Click play for the vibes! ✨")
 
-# 5. The Logic
-# This placeholder allows us to overwrite the entire page
+
+
 placeholder = st.empty()
 
 if 'vday_yes' not in st.session_state:
@@ -75,7 +75,7 @@ if not st.session_state.vday_yes:
                 st.rerun()
 
         with col2:
-            # The "Running" No button
+           
             components.html(
                 """
                 <div id="container" style="height: 300px; width: 100%; position: relative;">
@@ -110,7 +110,7 @@ if not st.session_state.vday_yes:
             )
 
 else:
-    # 6. The "Success" Screen (Everything shows up high on the page)
+   
     with placeholder.container():
         st.balloons()
         st.markdown("### YAY! Best decision ever! 🥰")
@@ -124,5 +124,6 @@ else:
             </div>
         """, unsafe_allow_html=True)
         
-        # Centering the GIF
+        
         st.image("https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGVlNDIyajN4N24ydGF1enpjamJwb2N2MDF2MmM3cWN4dzRyMGM5cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/yZ7Xya4covzN1WhOAa/giphy.gif", use_container_width=True)
+
