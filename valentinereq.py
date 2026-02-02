@@ -1,14 +1,13 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-
+# 1. Page Config
 st.set_page_config(page_title="For My Monklet ❤️", page_icon="💖")
 
-
-# Removed the trailing '?' to ensure the URL loads correctly
+# 2. Your Spotify Link
 spotify_src = "https://open.spotify.com/embed/playlist/6wZprQFnnKG8rQO0mhiW7M?"
 
-
+# 3. Custom Styling
 st.markdown("""
     <style>
     .stApp {
@@ -38,35 +37,84 @@ st.markdown("""
         border-radius: 15px;
         border: 2px dashed #ffccd5;
         text-align: center;
-        margin-top: 20px;
+        margin: 20px auto;
         color: #444;
         font-size: 1.2em;
         line-height: 1.6;
+        max-width: 500px;
     }
     </style>
     """, unsafe_allow_html=True)
 
-
+# 4. Sidebar for the Music Player
 with st.sidebar:
     st.markdown("### 🎵 For Monklet")
-    # Change height from 80 to 152 to reveal the Play button
+    # Height set to 152 for the play button
     components.iframe(spotify_src, height=152, scrolling=False)
     st.write("---")
     st.write("Click play for the vibes! ✨")
 
+# 5. The Logic
+# This placeholder allows us to overwrite the entire page
+placeholder = st.empty()
 
-st.markdown('<h3 style="text-align: center;">❤️ 💌 ❤️</h3>', unsafe_allow_html=True)
-st.title("Hi Monklet!")
-st.header("Will you be my Valentine?")
+if 'vday_yes' not in st.session_state:
+    st.session_state.vday_yes = False
 
-col1, col2 = st.columns(2)
+if not st.session_state.vday_yes:
+    with placeholder.container():
+        st.markdown('<h3 style="text-align: center;">❤️ 💌 ❤️</h3>', unsafe_allow_html=True)
+        st.title("Hi Monklet!")
+        st.header("Will you be my Valentine?")
 
-with col1:
-    if st.button("YES! 💖"):
+        col1, col2 = st.columns(2)
+
+        with col1:
+            if st.button("YES! 💖"):
+                st.session_state.vday_yes = True
+                st.rerun()
+
+        with col2:
+            # The "Running" No button
+            components.html(
+                """
+                <div id="container" style="height: 300px; width: 100%; position: relative;">
+                    <button id="noButton" style="
+                        position: absolute;
+                        padding: 10px 20px;
+                        background-color: white;
+                        color: #ff4d6d;
+                        border: 2px solid #ff4d6d;
+                        border-radius: 20px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        transition: all 0.15s ease;
+                        z-index: 1000;
+                    ">No</button>
+                </div>
+                <script>
+                    const btn = document.getElementById('noButton');
+                    const container = document.getElementById('container');
+                    btn.addEventListener('mouseover', function() {
+                        const containerWidth = container.clientWidth - btn.clientWidth;
+                        const containerHeight = container.clientHeight - btn.clientHeight;
+                        btn.style.left = Math.random() * containerWidth + 'px';
+                        btn.style.top = Math.random() * containerHeight + 'px';
+                    });
+                    btn.addEventListener('click', function() {
+                        alert("Nice try Baby! You gotta click Yes!");
+                    });
+                </script>
+                """,
+                height=350,
+            )
+
+else:
+    # 6. The "Success" Screen (Everything shows up high on the page)
+    with placeholder.container():
         st.balloons()
         st.markdown("### YAY! Best decision ever! 🥰")
         
-        # Your custom "Human" poem
         st.markdown("""
             <div class="poem-box">
                 Roses are red,<br>
@@ -76,46 +124,5 @@ with col1:
             </div>
         """, unsafe_allow_html=True)
         
-        st.image("https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGVlNDIyajN4N24ydGF1enpjamJwb2N2MDF2MmM3cWN4dzRyMGM5cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/yZ7Xya4covzN1WhOAa/giphy.gif")
-
-with col2:
-    # The "Running" No button
-    components.html(
-        """
-        <div id="container" style="height: 300px; width: 100%; position: relative;">
-            <button id="noButton" style="
-                position: absolute;
-                padding: 10px 20px;
-                background-color: white;
-                color: #ff4d6d;
-                border: 2px solid #ff4d6d;
-                border-radius: 20px;
-                font-weight: bold;
-                cursor: pointer;
-                transition: all 0.15s ease;
-                z-index: 1000;
-            ">No</button>
-        </div>
-
-        <script>
-            const btn = document.getElementById('noButton');
-            const container = document.getElementById('container');
-
-            btn.addEventListener('mouseover', function() {
-                const containerWidth = container.clientWidth - btn.clientWidth;
-                const containerHeight = container.clientHeight - btn.clientHeight;
-                const newLeft = Math.random() * containerWidth;
-                const newTop = Math.random() * containerHeight;
-                btn.style.left = newLeft + 'px';
-                btn.style.top = newTop + 'px';
-            });
-            
-            btn.addEventListener('click', function() {
-                alert("Nice try Baby! You gotta click Yes!");
-            });
-        </script>
-        """,
-        height=350,
-    )
-
-
+        # Centering the GIF
+        st.image("https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGVlNDIyajN4N24ydGF1enpjamJwb2N2MDF2MmM3cWN4dzRyMGM5cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/yZ7Xya4covzN1WhOAa/giphy.gif", use_container_width=True)
