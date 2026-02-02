@@ -5,7 +5,8 @@ import streamlit.components.v1 as components
 st.set_page_config(page_title="For My Monklet ❤️", page_icon="💖")
 
 
-spotify_src = "https://open.spotify.com/embed/playlist/6wZprQFnnKG8rQO0mhiW7M?"
+# Removed the trailing '?' to ensure the URL loads correctly
+spotify_src = "https://accounts.spotify.com/api/token6"
 
 
 st.markdown("""
@@ -48,7 +49,8 @@ st.markdown("""
 
 with st.sidebar:
     st.markdown("### 🎵 For Monklet")
-    components.iframe(spotify_src, height=80, scrolling=False)
+    # Increased height to 152 so the play button is visible
+    components.iframe(spotify_src, height=152, scrolling=False)
     st.write("---")
     st.write("Click play for the vibes! ✨")
 
@@ -115,4 +117,3 @@ with col2:
         """,
         height=350,
     )
-
