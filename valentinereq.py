@@ -49,7 +49,7 @@ st.markdown("""
 
 with st.sidebar:
     st.markdown("### 🎵 For Monklet")
-    # Increased height to 152 so the play button is visible
+    # Change height from 80 to 152 to reveal the Play button
     components.iframe(spotify_src, height=152, scrolling=False)
     st.write("---")
     st.write("Click play for the vibes! ✨")
@@ -117,3 +117,4 @@ with col2:
         """,
         height=350,
     )
+
